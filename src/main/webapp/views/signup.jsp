@@ -18,17 +18,20 @@
 				<c:url value="/sign-in" var="signinUrl"></c:url>
 				<c:url value="/sign-up" var="signupUrl"></c:url>
 				
-				<form action="${signInUrl}" method="post">
+				<form action="${signupUrl}" method="post">
 					<div class="mb-3">
-						<label for="name">Member Name</label> <input type="text"
+						<label for="name">Member Name</label> 
+						<input name="name" type="text"
 							placeholder="Enter member name" class="form-control mt-1" />
 					</div>
 					<div class="mb-3">
-						<label for="loginId">Login Id</label> <input type="text"
+						<label for="loginId">Login Id</label> 
+						<input type="text" name="login"
 							placeholder="Enter login Id" class="form-control mt-1" />
 					</div>
 					<div class="mb-3">
-						<label for="password">Password</label> <input type="password"
+						<label for="password">Password</label> 
+						<input type="password" name="password"
 							placeholder="Enter password" class="form-control mt-1" />
 					</div>
 					<div>

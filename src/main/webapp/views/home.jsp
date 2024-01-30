@@ -25,19 +25,25 @@
 		<h3>Post Demo</h3>
 		
 		<div class="text-secondary pb-4">
-			Search Keyword : ...
+			Search Keyword : ${param.keyword empty ? 'Search All' : param.keyword}
 		</div>
 		
-		<div class="card mb-2">
+		<c:forEach items="${list}" var="post">
+			<div class="card mb-4">
 			<div class="card-body">
-				Post Title
+				${post.title()}
 			</div>
 			<div class="card-footer d-flex justify-content-between align-items-center">
-				<span>Post Date Time</span>
-				<c:url value="/details" var="detailsUrl"></c:url>
+				<span>${post.creation()}</span>
+				<c:url value="/details" var="detailsUrl">
+					<c:param name="id" value="${post.id()}"></c:param>
+				</c:url>
 				<a href="${detailsUrl}" class="btn"> Show Details </a>
 			</div>
 		</div>
+		</c:forEach>
+		
+		
 		
 	</main>
 

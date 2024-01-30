@@ -22,11 +22,11 @@
 				<form action="${signInUrl}" method="post">
 					<div class="mb-3">
 						<label for="loginId">Login Id</label>
-						<input type="text" placeholder="Enter login Id" class="form-control mt-1" />
+						<input name="login" type="text" placeholder="Enter login Id" class="form-control mt-1" />
 					</div>
 					<div class="mb-3">
 						<label for="password">Password</label>
-						<input type="password" placeholder="Enter password" class="form-control mt-1" />
+						<input name="password" type="password" placeholder="Enter password" class="form-control mt-1" />
 					</div>
 					<div>
 						<button class="btn btn-primary mr-2">Sign In</button>

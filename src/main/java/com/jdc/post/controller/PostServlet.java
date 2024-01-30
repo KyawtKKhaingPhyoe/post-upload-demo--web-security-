@@ -1,4 +1,4 @@
-package com.jdc.controller;
+package com.jdc.post.controller;
 
 import java.io.IOException;
 

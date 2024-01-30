@@ -32,4 +32,9 @@
   	</form-login-config>
   </login-config>
   
+  <resource-ref>
+  	<res-ref-name>jdbc/postDS</res-ref-name>
+  	<res-type>javax.sql.DataSource</res-type>
+  </resource-ref>
+  
 </web-app>

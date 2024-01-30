@@ -1,7 +1,13 @@
-package com.jdc.controller;
+package com.jdc.post.controller;
 
 import java.io.IOException;
 
+import javax.sql.DataSource;
+
+import com.jdc.post.model.MemberDao;
+import com.jdc.post.model.dto.MemberVO;
+
+import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,6 +22,9 @@ import jakarta.servlet.http.HttpServletResponse;
 public class SecurityServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
+	@Resource(name="jdbc/postDS")
+	private DataSource dataSource;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,17 +50,23 @@ public class SecurityServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		var name = req.getParameter("name");
+		var login = req.getParameter("login");
+		var password = req.getParameter("password");
+		
+		var dao = MemberDao.getInstance(dataSource);
+		
 		switch(req.getServletPath()) {
 		case "/sign-in" -> {
-			
+			req.login(login, password);
 		}
 		case "/sign-up" -> {
-			
-		}
-		default -> {
-			
+			dao.signUp(name, login, password);
+			req.login(login, password);
 		}
 		}
+		
+		req.getSession(true).setAttribute("loginUser", dao.find(login));;
 		
 		resp.sendRedirect(getServletContext().getContextPath().concat("/home"));
 		

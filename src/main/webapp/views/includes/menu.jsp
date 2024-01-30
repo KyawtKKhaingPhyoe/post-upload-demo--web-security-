@@ -27,7 +27,7 @@
 			
 				<div class="col-8">
 					<!-- Search -->
-					<input name="keyword" type="text" placeholder="Search Keyword"
+					<input name="keyword" value="${param.keyword} type="text" placeholder="Search Keyword"
 						class="form-control" />
 				</div>
 
