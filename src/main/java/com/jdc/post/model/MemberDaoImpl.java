@@ -50,8 +50,8 @@ class MemberDaoImpl implements MemberDao {
 			var stmt= conn.prepareStatement(SIGNUP_SQL)){
 				
 				stmt.setString(1, name);
-				stmt.setString(1, login);
-				stmt.setString(1, password);
+				stmt.setString(2, login);
+				stmt.setString(3, password);
 				
 				stmt.executeUpdate();
 				

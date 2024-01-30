@@ -25,7 +25,7 @@
 		<h3>Post Demo</h3>
 		
 		<div class="text-secondary pb-4">
-			Search Keyword : ${param.keyword empty ? 'Search All' : param.keyword}
+			Search Keyword :  ${empty param.keyword  ? 'Search All' : param.keyword}
 		</div>
 		
 		<c:forEach items="${list}" var="post">

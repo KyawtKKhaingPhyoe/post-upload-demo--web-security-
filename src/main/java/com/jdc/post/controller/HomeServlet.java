@@ -26,11 +26,9 @@ public class HomeServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		List<Post> list = PostDao.getInstance(dataSource).search(req.getParameter("keyword"));
+		req.setAttribute("list", PostDao.getInstance(dataSource).search(req.getParameter("keyword")));
 		
-		req.setAttribute("list", list);
-		
-		getServletContext().getRequestDispatcher("/views/home.jsp");
+		getServletContext().getRequestDispatcher("/views/home.jsp").forward(req, resp);
 		
 	}
 

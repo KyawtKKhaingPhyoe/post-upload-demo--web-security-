@@ -15,10 +15,10 @@
 			<div class="col-4">
 				<h3>Sign Up</h3>
 
-				<c:url value="/sign-in" var="signinUrl"></c:url>
-				<c:url value="/sign-up" var="signupUrl"></c:url>
+				<c:url value="/sign-in" var="signInUrl"></c:url>
+				<c:url value="/sign-up" var="signUpUrl"></c:url>
 				
-				<form action="${signupUrl}" method="post">
+				<form action="${signUpUrl}" method="post">
 					<div class="mb-3">
 						<label for="name">Member Name</label> 
 						<input name="name" type="text"
@@ -37,7 +37,7 @@
 					<div>
 						<button class="btn btn-primary mr-2">Sign Up</button>
 
-						<a href="${signinUrl}" class="btn btn-secondary mr-2">Sign In</a>
+						<a href="${signInUrl}" class="btn btn-secondary mr-2">Sign In</a>
 					</div>
 
 				</form>
