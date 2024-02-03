@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import com.jdc.post.model.dto.MemberVO;
 import com.jdc.post.model.dto.Post;
 
 public interface PostDao {
@@ -14,4 +15,9 @@ public interface PostDao {
 
 	List<Post> search(String keyword);
 
+	void delete(int id);
+
+	Post findById(int id);
+
+	int save(String postId, String title, String content, MemberVO loginUser);
 }

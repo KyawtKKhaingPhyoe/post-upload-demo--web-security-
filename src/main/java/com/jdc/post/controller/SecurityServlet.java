@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.sql.DataSource;
 
 import com.jdc.post.model.MemberDao;
-import com.jdc.post.model.dto.MemberVO;
 
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
@@ -14,22 +13,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {
-		"/sign-in",
-		"/sign-up",
-		"/sign-out"
+@WebServlet({
+	"/sign-in", 
+	"/sign-up", 
+	"/sign-out" 
 })
-public class SecurityServlet extends HttpServlet {
+public class SecurityServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	
-	@Resource(name="jdbc/postDS")
+	@Resource(name = "jdbc/postDS")
 	private DataSource dataSource;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		var view =  switch(req.getServletPath()) {
+		var view = switch(req.getServletPath()) {
 		case "/sign-in" -> "/views/signin.jsp";
 		case "/sign-up" -> "/views/signup.jsp";
 		case "/sign-out" -> {
@@ -44,7 +42,6 @@ public class SecurityServlet extends HttpServlet {
 		} else {
 			getServletContext().getRequestDispatcher(view).forward(req, resp);
 		}
-		
 	}
 	
 	@Override
@@ -66,11 +63,9 @@ public class SecurityServlet extends HttpServlet {
 		}
 		}
 		
-		req.getSession(true).setAttribute("loginUser", dao.find(login));;
+		req.getSession(true).setAttribute("loginUser", dao.find(login));
 		
 		resp.sendRedirect(getServletContext().getContextPath().concat("/home"));
-		
 	}
-	
 
 }
